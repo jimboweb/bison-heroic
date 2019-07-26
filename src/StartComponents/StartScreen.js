@@ -9,11 +9,12 @@ import formUtil from '../util/FormUtil';
  */
 function StartScreen(props) {
 
-    const submitAction=()=>{
+    const submitAction=(event)=>{
         const form = document.getElementById('startForm');
         const formData = formUtil.formInputsToObject(form);
         const jsonData = JSON.stringify(formData);
         props.submitAction(jsonData);
+        event.preventDefault();
     };
 
     return (

@@ -63,7 +63,7 @@ const fetchUtil = {
           return resp.json();
         },
         err=> {
-          throw "error: " + err;
+          throw new Error("error: " + err);
         })
       .then(
         respData=>{callback(respData)}
