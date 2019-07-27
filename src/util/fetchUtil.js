@@ -30,9 +30,11 @@ const fetchUtil = {
 
 
     const headers = new Headers(
-      method==='get'?{}:{
-        'Content-Type': route==='account/login'?'application/x-www-form-urlencoded':'application/json'
-      }
+      method==='get'?
+        {}:
+        {
+          'Content-Type': 'application/json'
+        }
     );
 
 
@@ -43,8 +45,8 @@ const fetchUtil = {
 
     let requestProps = {
       method: method,
-      mode: 'no-cors',
-      redirect: "follow",
+      mode: 'cors',
+      redirect: 'follow',
       headers: headers
     };
 
@@ -52,10 +54,13 @@ const fetchUtil = {
       requestProps.body=data;
     }
 
+    //fixme 190726: can't use application.json with no-cors. goddamit I'm going to have to use cors
+
     const request = new Request(
       fetchUtil.getApiUrl() + route,
       requestProps
     );
+    console.log("content-type in request:" + request.headers.get('Content-Type'));
 
     fetch(request)
       .then(

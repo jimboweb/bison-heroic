@@ -4,10 +4,11 @@ import VisibleCard from "./VisibleCard";
 function VisibleCards(props){
     return <section id='visibleCardDisplay'>
         {
-            props.visibleCards.map(
+            props.cards.map(
                 (visibleCard,i)=><VisibleCard
                     startIndex = {visibleCard.startIndex}
                     value = {visibleCard.value}
+                    view = {visibleCard.view}
                     revealed = {false}
                 />
             )

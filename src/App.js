@@ -26,7 +26,7 @@ function App() {
       {
         Deck===null?
           <StartScreen submitAction = {submitAction}/>:
-          <Game />
+          <Game deck = {Deck} />
       }
     </div>
   );

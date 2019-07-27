@@ -7,7 +7,7 @@ function ComponentName(props) {
 
     return (
         <div id='game'>
-            <VisibleCards />
+            <VisibleCards cards = {props.deck.cards}/>
         </div>
     );
 }

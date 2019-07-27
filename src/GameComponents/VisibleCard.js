@@ -2,7 +2,6 @@ import React from "react";
 import '../App.css';
 import CardFace from './CardFace';
 
-
 function VisibleCard(props) {
     return (
         <div className="visibleCard">
@@ -10,9 +9,9 @@ function VisibleCard(props) {
 
             </div>
             {props.revealed?
-                <img src="card_back.jpg" />:
+                <img src="../img/card_back.jpeg" />:
                 <CardFace
-                    value={props.value}
+                    view = {props.view}
                 />
             }
 

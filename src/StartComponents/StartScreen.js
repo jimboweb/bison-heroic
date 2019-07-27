@@ -7,19 +7,23 @@ import formUtil from '../util/FormUtil';
  * @returns a start form where user can pick size of deck and level of challenge
  * @constructor
  */
+
 function StartScreen(props) {
 
     const submitAction=(event)=>{
+        event.preventDefault();
         const form = document.getElementById('startForm');
         const formData = formUtil.formInputsToObject(form);
         const jsonData = JSON.stringify(formData);
         props.submitAction(jsonData);
-        event.preventDefault();
     };
 
     return (
         <form id='startForm'>
-            <input type = 'number' name='deckSize'/>
+            <input type = 'deckSize' name='deckSize'/>
+            <select name = 'cardType'>
+                <option value = 'dragon'>Dragon</option>
+            </select>
             <input type = 'submit' onClick={submitAction}/>
         </form>
     );

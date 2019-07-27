@@ -8,9 +8,11 @@ const formUtil = {
 
   formInputsToObject:(form)=>{
     const inputs = Array.from(form.querySelectorAll("input"));
+    const selects = Array.from(form.querySelectorAll("select"));
+    const allInputs = inputs.concat(selects);
     let newObj = {};
-    inputs.forEach((input)=>{
-      if(input.type==="checkbox") {
+    allInputs.forEach((input)=>{
+      if(input.type==='checkbox') {
         newObj[input.name]=(input.checked==="checked");
       } else {
         newObj[input.name] = input.value;
