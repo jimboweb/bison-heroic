@@ -10,9 +10,9 @@ function VisibleCard(props) {
             <div className="visibleCardImgSize">
 
             </div>
-            {props.revealed ? <CardFace
+            <CardFace
               view={props.view}
-            /> : <img src={cardBack} alt = "card back"/>
+            />
             }
 
         </div>

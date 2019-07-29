@@ -1,0 +1,9 @@
+.faceDownCard{
+    height:10%;
+    margin:1px solid white;
+    position: relative;
+}
+
+.faceDownCard>img{
+    width:100%;
+}

@@ -8,10 +8,13 @@ import Cards from "./Cards";
 
 function Game(props) {
   const [cardsUp, setCardsUp]=useState([null,null]);
+  const visibleCards = cardsUp.map(
+    cardUp=>cardUp?props.deck.cards[cardUp]:null
+  )
 
   return (
       <div id='game'>
-          <VisibleCards cards = {props.deck.cards} />
+          <VisibleCards cards = {visibleCards} />
           <Cards cards = {props.deck.cards} cardsUp ={cardsUp} />
       </div>
   );
