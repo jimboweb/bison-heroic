@@ -6,7 +6,7 @@ import CardBack from '../img/card_back.jpeg';
 
 function Card(props) {
   return (
-    <div id={`card${props.startIndex}`}>
+    <div id={`card${props.startIndex}`} className='card'>
       {props.faceUp?
         <CardFace properties = {props.properties} />:
         <img src={CardBack} alt = 'face down card'/>

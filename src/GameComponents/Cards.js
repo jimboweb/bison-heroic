@@ -4,7 +4,7 @@ import Card from "./Card";
 
 function Cards(props) {
   return (
-    <div>
+    <div id="cards">
       {props.cards.map(
         (card)=>
           {
