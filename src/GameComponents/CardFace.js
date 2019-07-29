@@ -1,15 +1,26 @@
 import React from "react";
 import '../App.css';
-
-import sanitizeHtml from 'sanitize-html';
+import './CardFace.css';
+import defaultImg from '../img/dragon_head.png';
 
 
 function CardFace(props) {
-    const dangerousHtml = props.view;
-    const sanitizedHtml = sanitizeHtml(dangerousHtml,{allowedTags: ['div'], allowedAttributes: {'div':['class','data-property']}});
     return (
-        <div dangerouslySetInnerHTML={{__html:sanitizedHtml}} />
-
+        <div  className='cardFace'>
+            <div className='cardImage'>
+                {/*TODO 190729: get image as blob or base64 and create image url connected to bezoar-indue/ObjectClasses/FaceValue line 28 or so */}
+                <img src={defaultImg} alt = 'default' />
+            </div>
+            <div className='cardProperties'>
+                {
+                    props.properties.keys().map(
+                      key=> <div className='cardProp' data-property={key}>
+                          {key}: {props.properties[key]}
+                      </div>
+                    )
+                }
+            </div>
+        </div>
     );
 }
 

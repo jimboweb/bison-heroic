@@ -1,0 +1,15 @@
+.visibleCard{
+    height:10%;
+    margin:1px solid white;
+    position: relative;
+}
+
+.visibleCard>img{
+    width:100%;
+}
+
+.visibleCardImgSize{
+    position:absolute;
+    top:0;
+    left:0;
+}

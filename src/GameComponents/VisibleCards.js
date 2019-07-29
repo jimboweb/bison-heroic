@@ -1,5 +1,6 @@
 import React from 'react'
 import VisibleCard from "./VisibleCard";
+import './VisibleCards.css'
 
 function VisibleCards(props){
     return <section id='visibleCardDisplay'>
