@@ -13,13 +13,14 @@ function Game(props) {
   )
 
   const flipCard = (cardNum)=>{
-    // if cardsUp is empty or full set the array to a single value of cardsUp,
+    if(cardsUp.indexOf(cardNum)===-1)
+    {// if cardsUp is empty or full set the array to a single value of cardsUp,
     // otherwise keep the first value and add the second value
     setCardsUp(
       cardsUp.length === 1 ?
         [cardsUp[0], cardNum] :
         [cardNum]
-    );
+    );}
   };
 
 
