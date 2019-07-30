@@ -13,7 +13,7 @@ function VisibleCard(props) {
             <CardFace
               properties = {props.properties}
             />
-            }
+            
 
         </div>
     );

@@ -1,3 +1,9 @@
 .cardFace{
 
 }
+.cardImage{
+    width:80%;
+}
+.cardImage>img{
+    width:100%;
+}
