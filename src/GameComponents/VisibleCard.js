@@ -11,7 +11,7 @@ function VisibleCard(props) {
 
             </div>
             <CardFace
-              view={props.view}
+              properties = {props.properties}
             />
             }
 

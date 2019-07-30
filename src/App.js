@@ -4,7 +4,6 @@ import fetchUtil from './util/fetchUtil'
 import StartScreen from "./StartComponents/StartScreen";
 import Game from './GameComponents/Game'
 
-//todo 190723: create basic startScreen, create Deck state and pass to Game, then make it show the cards properly
 
 function App() {
 
@@ -20,13 +19,22 @@ function App() {
     )
   };
 
+  const swapCards = (firstCard, secondCard)=>{
+    if(Deck.length>firstCard || Deck.length>secondCard){
+      console.log('error swapping cards: index out of range');
+    } else {
+      const temp=Deck[firstCard];
+      Deck[firstCard]=Deck[secondCard];
+      Deck[secondCard]=temp;
+    }
+  };
 
   return (
     <div className="App">
       {
         Deck===null?
-          <StartScreen submitAction = {submitAction}/>:
-          <Game deck = {Deck} />
+          <StartScreen submitAction = {submitAction} />:
+          <Game deck = {Deck} swapCard = {swapCards} />
       }
     </div>
   );

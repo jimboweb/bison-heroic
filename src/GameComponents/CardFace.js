@@ -5,6 +5,7 @@ import defaultImg from '../img/dragon_head.png';
 
 
 function CardFace(props) {
+    console.log(`props.properties = ${props.properties}`);
     return (
         <div  className='cardFace'>
             <div className='cardImage'>
@@ -13,7 +14,7 @@ function CardFace(props) {
             </div>
             <div className='cardProperties'>
                 {
-                    props.properties.keys().map(
+                    Object.keys(props.properties).map(
                       key=> <div className='cardProp' data-property={key}>
                           {key}: {props.properties[key]}
                       </div>
