@@ -16,12 +16,11 @@ function Game(props) {
     // if cardsUp is empty or full set the array to a single value of cardsUp,
     // otherwise keep the first value and add the second value
     setCardsUp(
-      cardsUp.length===1?
-        [cardsUp]:
-        [cardsUp[0],cardNum]
+      cardsUp.length === 1 ?
+        [cardsUp[0], cardNum] :
+        [cardNum]
     );
   };
-
 
 
   return (

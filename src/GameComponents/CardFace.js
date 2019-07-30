@@ -15,7 +15,7 @@ function CardFace(props) {
             <div className='cardProperties'>
                 {
                     Object.keys(props.properties).map(
-                      key=> <div className='cardProp' data-property={key}>
+                      key=> <div className='cardProp' data-property={key} key = {key}>
                           {key}: {props.properties[key]}
                       </div>
                     )
