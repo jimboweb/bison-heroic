@@ -3,6 +3,7 @@ import '../App.css';
 import VisibleCards from './VisibleCards'
 import './Game.css'
 import Cards from "./Cards";
+import Controls from "./Controls";
 
 
 
@@ -23,11 +24,20 @@ function Game(props) {
     );}
   };
 
+  const swapCards = () =>{
+    if(cardsUp.length===2){
+      props.swapCards(cardsUp[0],cardsUp[1]);
+    }
+  };
+
 
   return (
       <div id='game'>
           <VisibleCards
             cards = {visibleCards}
+          />
+          <Controls
+            swapCards = {swapCards}
           />
           <Cards
             cards = {props.deck.cards}

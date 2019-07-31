@@ -23,9 +23,19 @@ function App() {
     if(Deck.length>firstCard || Deck.length>secondCard){
       console.log('error swapping cards: index out of range');
     } else {
-      const temp=Deck[firstCard];
-      Deck[firstCard]=Deck[secondCard];
-      Deck[secondCard]=temp;
+      const updatedCards = Object.assign(
+        Deck.cards,
+        {
+          [firstCard.toString()]:Deck.cards[secondCard],
+          [secondCard.toString()]:Deck.cards[firstCard]
+        }
+      );
+      setDeck(
+        Object.assign(
+          Deck,
+          {cards:updatedCards}
+        )
+      );
     }
   };
 
@@ -34,7 +44,7 @@ function App() {
       {
         Deck===null?
           <StartScreen submitAction = {submitAction} />:
-          <Game deck = {Deck} swapCard = {swapCards} />
+          <Game deck = {Deck} swapCards = {swapCards} />
       }
     </div>
   );
