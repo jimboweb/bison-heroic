@@ -30,12 +30,15 @@ function App() {
           [secondCard.toString()]:Deck.cards[firstCard]
         }
       );
-      setDeck(
-        Object.assign(
-          Deck,
-          {cards:updatedCards}
-        )
+      const newDeck = Object.assign(
+        Deck,
+        {cards:updatedCards}
       );
+      setDeck(
+        // assigning Deck to a new object to force update.
+        // is there a better way?
+        Object.assign({}, newDeck
+      ));
     }
   };
 
