@@ -8,7 +8,9 @@ function Cards(props) {
       {props.cards.map(
         (card, i)=>
           {
-            const faceUp = props.cardsUp.indexOf(card.startIndex)>=0;
+            const faceUp = props.showAll?
+              true:
+              props.cardsUp.indexOf(i)>=0;
             return <Card
               key = {card.startIndex}
               currentIndex = {i}

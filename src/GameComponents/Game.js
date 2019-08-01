@@ -9,6 +9,7 @@ import Controls from "./Controls";
 
 function Game(props) {
   const [cardsUp, setCardsUp]=useState([]);
+  const [showAll, setShowAll]=useState(false);
   const visibleCards = cardsUp.map(
     cardUp=>cardUp?props.deck.cards[cardUp]:null
   )
@@ -30,6 +31,10 @@ function Game(props) {
     }
   };
 
+  const showAllCards=()=>{
+    setShowAll(true);
+  };
+
 
   return (
       <div id='game'>
@@ -38,11 +43,14 @@ function Game(props) {
           />
           <Controls
             swapCards = {swapCards}
+            gameOver = {!showAll}
+            showAllCards = {showAllCards}
           />
           <Cards
             cards = {props.deck.cards}
             cardsUp= {cardsUp}
             flipCard = {flipCard}
+            showAll = {showAll}
           />
       </div>
   );

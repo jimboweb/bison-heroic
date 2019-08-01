@@ -8,9 +8,20 @@ function Controls(props) {
     props.swapCards();
   };
 
+  const showButtonAction = (event) => {
+    event.preventDefault();
+    props.showAllCards();
+  };
+
   return (
     <div id='controls'>
-      <button onClick={swapButtonAction}>Swap Cards</button>
+      <button
+        onClick={swapButtonAction}>
+        Swap Cards
+      </button>
+      <button onClick={showButtonAction}>
+        Show cards
+      </button>
     </div>
   );
 }

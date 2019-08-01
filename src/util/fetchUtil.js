@@ -54,7 +54,6 @@ const fetchUtil = {
       requestProps.body=data;
     }
 
-    //fixme 190726: can't use application.json with no-cors. goddamit I'm going to have to use cors
 
     const request = new Request(
       fetchUtil.getApiUrl() + route,
