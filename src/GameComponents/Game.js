@@ -4,15 +4,19 @@ import VisibleCards from './VisibleCards'
 import './Game.css'
 import Cards from "./Cards";
 import Controls from "./Controls";
+import MoveCounter from "./MoveCounter";
 
 
 
 function Game(props) {
   const [cardsUp, setCardsUp]=useState([]);
   const [showAll, setShowAll]=useState(false);
+  const [moves, setMoves]= useState(0);
   const visibleCards = cardsUp.map(
     cardUp=>cardUp?props.deck.cards[cardUp]:null
-  )
+  );
+
+  const addMove=()=>setMoves(moves+1);
 
   const flipCard = (cardNum)=>{
     if(cardsUp.indexOf(cardNum)===-1)
@@ -45,12 +49,15 @@ function Game(props) {
             swapCards = {swapCards}
             gameOver = {!showAll}
             showAllCards = {showAllCards}
+            addMove = {addMove}
           />
+          <MoveCounter />
           <Cards
             cards = {props.deck.cards}
             cardsUp= {cardsUp}
             flipCard = {flipCard}
             showAll = {showAll}
+            addMove = {addMove}
           />
       </div>
   );
