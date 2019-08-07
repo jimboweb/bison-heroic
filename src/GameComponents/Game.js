@@ -27,10 +27,12 @@ function Game(props) {
         [cardsUp[0], cardNum] :
         [cardNum]
     );}
+    addMove();
   };
 
   const swapCards = () =>{
     if(cardsUp.length===2){
+      addMove();
       props.swapCards(cardsUp[0],cardsUp[1]);
     }
   };
@@ -49,15 +51,13 @@ function Game(props) {
             swapCards = {swapCards}
             gameOver = {!showAll}
             showAllCards = {showAllCards}
-            addMove = {addMove}
           />
-          <MoveCounter />
+          <MoveCounter moves = {moves} />
           <Cards
             cards = {props.deck.cards}
             cardsUp= {cardsUp}
             flipCard = {flipCard}
             showAll = {showAll}
-            addMove = {addMove}
           />
       </div>
   );
