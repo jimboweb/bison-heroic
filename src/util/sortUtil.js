@@ -1,29 +1,22 @@
 /**
- * naive algorithm to compare two algorithms using kendall-tau
- * this has reduces that make a bigger array than the original,
- * if that bothers you look away
- * @param a first array
- * @param b second array
- * @returns integer of kendall-tau comparison
+ * Returns kendall-tau rank coefficient as a measure of "percentage matched" between a target sorted
+ * array and a comparison array. Uses a naive algorithm right now, may update to more efficient algorithm later.
+ * @param a target sorted array
+ * @param b comparison array of the same length as a
+ * @returns number between 0 (completely unmatched) and 1 (completely matched)
  */
 const kendallTau = (a,b)=>{
   if(a.length!==b.length){
-    throw new Error("in kendall tau algoritm arrays must be same length");
+    throw new Error("in kendall tau algorithm arrays must be same length");
   }
 
-  /**
-   * compares each number to each other number to find integer comparison for each pair
-   * @param arr
-   * @returns LARGER array (size: triangular(arr.length)) with integer comparison for each pair
-   */
+  //this reduce returns a bigger array than you put in. if you find that
+  //unseemly, you might want to look away
   const compareAll= (arr) => arr.reduce(
     (accumOuter,itemOuter,i)=>
-
       accumOuter.concat(
-        arr.filter(
-          (_void,j)=>
-            j!==i
-        )
+        arr
+          .slice(i+1,arr.length)
           .reduce(
             (accumInner, itemInner)=>
             {
@@ -37,9 +30,9 @@ const kendallTau = (a,b)=>{
       )
     ,[]
   );
-
+  const numPairs = ((a.length*(a.length-1))/2);
   const bCompare = compareAll(b);
-  return compareAll(a)
+  return 1-compareAll(a)
     .map(
       (aItem,i)=>
         (aItem===0 || bCompare[i] === 0)?
@@ -49,5 +42,7 @@ const kendallTau = (a,b)=>{
     ).reduce(
       (accum,item)=>
         accum+item
-    )
+    )/numPairs
 };
+
+export default kendallTau;
