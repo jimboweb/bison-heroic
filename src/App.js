@@ -8,6 +8,7 @@ import Game from './GameComponents/Game'
 function App() {
 
   const [Deck,setDeck]=useState(null);
+  const [Objective, setObjective] = useState([]);
 
   const submitAction = (data) =>{
     fetchUtil.postData(
@@ -15,6 +16,7 @@ function App() {
       data,
       (responseData)=>{
         setDeck(responseData.deck);
+        setObjective(responseData.objective);
       }
     )
   };
@@ -47,7 +49,7 @@ function App() {
       {
         Deck===null?
           <StartScreen submitAction = {submitAction} />:
-          <Game deck = {Deck} swapCards = {swapCards} />
+          <Game deck = {Deck} swapCards = {swapCards} objective = {Objective}/>
       }
     </div>
   );

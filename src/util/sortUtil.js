@@ -23,7 +23,7 @@ const kendallTau = (a,b)=>{
               accumInner.push(itemOuter===itemInner?
                 0:
                 itemOuter<itemInner?
-                  1:-1)
+                  1:-1);
               return accumInner;
             },[]
           )

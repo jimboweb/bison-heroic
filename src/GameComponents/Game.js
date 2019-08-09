@@ -5,6 +5,7 @@ import './Game.css'
 import Cards from "./Cards";
 import Controls from "./Controls";
 import MoveCounter from "./MoveCounter";
+import kendallTau from '../util/sortUtil';
 
 
 
@@ -12,6 +13,7 @@ function Game(props) {
   const [cardsUp, setCardsUp]=useState([]);
   const [showAll, setShowAll]=useState(false);
   const [moves, setMoves]= useState(0);
+  const [amountSorted, setAmountSorted] = useState(0);
   const visibleCards = cardsUp.map(
     cardUp=>cardUp?props.deck.cards[cardUp]:null
   );
@@ -34,11 +36,20 @@ function Game(props) {
     if(cardsUp.length===2){
       addMove();
       props.swapCards(cardsUp[0],cardsUp[1]);
+      checkAmountSorted();
     }
   };
 
   const showAllCards=()=>{
     setShowAll(true);
+  };
+
+  const checkAmountSorted = () => {
+    setAmountSorted(kendallTau(
+      props.deck.cards.map(
+        card=>card.startIndex
+      ),
+      props.objective));
   };
 
 
@@ -52,7 +63,7 @@ function Game(props) {
             gameOver = {!showAll}
             showAllCards = {showAllCards}
           />
-          <MoveCounter moves = {moves} />
+          <MoveCounter moves = {moves} amountSorted = {amountSorted} />
           <Cards
             cards = {props.deck.cards}
             cardsUp= {cardsUp}
