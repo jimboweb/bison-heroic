@@ -6,3 +6,8 @@
 .card>img{
     width:100%;
 }
+
+.lockedCard {
+    width:100px;
+    border:2px red solid;
+}

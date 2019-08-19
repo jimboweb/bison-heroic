@@ -14,22 +14,51 @@ function Game(props) {
   const [showAll, setShowAll]=useState(false);
   const [moves, setMoves]= useState(0);
   const [amountSorted, setAmountSorted] = useState(0);
+  const [cardLocked, setCardLocked] = useState(null)
   const visibleCards = cardsUp.map(
     cardUp=>cardUp?props.deck.cards[cardUp]:null
   );
 
   const addMove=()=>setMoves(moves+1);
 
+  const cardClicked = (num) => {
+    if(cardsUp.indexOf(num)>=0){
+      if(cardLocked===num){
+        unlockCard(num);
+      }else {
+        lockCard(num);
+      }
+    } else {
+      flipCard(num);
+    }
+  };
+
+
+  const lockCard = (num) => {
+    setCardLocked(num);
+    addMove();
+  };
+
+  const unlockCard = (num) => {
+    setCardLocked(null);
+    addMove();
+  }
+
   const flipCard = (cardNum)=>{
-    if(cardsUp.indexOf(cardNum)===-1)
-    {// if cardsUp is empty or full set the array to a single value of cardsUp,
-    // otherwise keep the first value and add the second value
-    setCardsUp(
+    addMove();
+    if(cardNum===cardLocked || cardsUp.indexOf(cardNum)>=0){
+      console.log("flipCard shouldn't be run on card that's up");
+    } else if(cardLocked!==null){
+      setCardsUp([cardLocked,cardNum]);
+    } else {
+      // if cardsUp is empty or full set the array to a single value of cardsUp,
+      // otherwise keep the first value and add the second value
+      setCardsUp(
       cardsUp.length === 1 ?
         [cardsUp[0], cardNum] :
         [cardNum]
-    );}
-    addMove();
+      );
+    }
   };
 
   const swapCards = () =>{
@@ -67,8 +96,9 @@ function Game(props) {
           <Cards
             cards = {props.deck.cards}
             cardsUp= {cardsUp}
-            flipCard = {flipCard}
+            cardClicked = {cardClicked}
             showAll = {showAll}
+            cardLocked = {cardLocked}
           />
       </div>
   );

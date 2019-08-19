@@ -11,12 +11,14 @@ function Cards(props) {
             const faceUp = props.showAll?
               true:
               props.cardsUp.indexOf(i)>=0;
+            const locked = i===props.cardLocked;
             return <Card
               key = {card.startIndex}
               currentIndex = {i}
               properties = {card.value.props}
               faceUp={faceUp}
-              flipCard = {props.flipCard}
+              cardClicked = {props.cardClicked}
+              locked = {locked}
             />
           }
       )}

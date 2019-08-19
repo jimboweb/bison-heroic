@@ -7,14 +7,14 @@ import CardBack from '../img/card_back.jpeg';
 function Card(props) {
 
   const clickAction = ()=>{
-    props.flipCard(props.currentIndex);
+    props.cardClicked(props.currentIndex);
   };
   console.log(`in Card props.properties = ${props.properties}`);
 
   return (
     <div
       id={`card${props.currentIndex}`}
-      className='card'
+      className={props.locked?'lockedCard':'card'}
       onClick={clickAction}
     >
       {props.faceUp?
